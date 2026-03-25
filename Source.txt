@@ -1,0 +1,691 @@
+/=== plagin Used  ===\
+
+// Remix Icon
+npm install remixicon
+
+// Bootstrap Icon
+npm install bootstrap-icons
+
+// React Icon
+npm install @iconify/react
+
+// All Icons
+npm install remixicon react-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
+
+// Swiper 
+npm install swiper
+
+// React Countup
+npm install react-countup
+
+// Mixitup Js For Filter Product
+npm install mixitup
+
+// SplideJS 
+npm install @splidejs/react-splide
+
+
+// Toast Notifications
+npm install react-toastify
+
+// SplideJS &  Auto Scroll Extension
+npm install @splidejs/react-splide @splidejs/splide-extension-auto-scroll
+
+
+
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import 'remixicon/fonts/remixicon.css';
+
+
+
+
+
+// ROOT  
+
+--prim: #FEEB9D;
+--prim-light: #fdfbf0;
+--second: #CC0D39;
+--white: #fff;
+--black: #000;
+--gradient: linear-gradient(307deg, #FFEA96 1.9%, #FFB0B0 85.96%);
+
+--GolosText: "Golos Text", sans-serif;
+--Audiowide: "Audiowide", sans-serif;
+--Lufga: var(--font-lufga);
+
+--transition-regular: .3s;
+--transition-slow: .6s;
+
+
+
+// Mobile Menu
+
+<div className="lg:hidden bg-white border-t border-gray-200 mt-3 transition-all duration-500">
+  <nav className="flex flex-col px-[4%] py-3 space-y-1">
+        {navLinks.map((link) =>
+            link.dropdown ? (
+                <div key={link.label} className="flex flex-col">
+                <button
+                  className="flex justify-between items-center w-full px-2 py-2 font-medium rounded-md hover:bg-gray-100"
+                  onClick={() => toggleDropdown(link.label)}
+                >
+                    {link.label}
+                    <i
+                      className={`ri-arrow-down-s-line transition-transform ${openDropdowns[link.label] ? "rotate-180" : ""
+                        }`}
+                    ></i>
+                  </button>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ${openDropdowns[link.label] ? "max-h-60 mt-1" : "max-h-0"
+                      }`}
+                  >
+                    <div className="flex flex-col bg-(--prim-) p-2 space-y-1">
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="px-2 py-1 GolosText bg-white border-b border-gray-300 rounded-md hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="block px-2 py-2 font-medium rounded-md hover:bg-gray-100"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                  {link.label}
+                </Link>
+            )
+        )}
+  </nav>
+</div>
+
+
+// Menus
+
+const navLinks: NavLink[] = [
+  { label: "Home", href: "/" },
+  {
+    label: "Shop",
+    href: "/UI-Components/Shop",
+    dropdown: [
+      { label: "Shop", href: "/UI-Components/Shop" },
+      { label: "Details", href: "/UI-Components/Shop/12" },
+      { label: "Cart", href: "/UI-Components/Pages/Cart" },
+      { label: "Wishlist", href: "/UI-Components/Pages/Wishlist" },
+      { label: "Checkout", href: "/UI-Components/Pages/Checkout" },
+    ],
+  },
+  {
+    label: "Blog",
+    href: "/UI-Components/Blogs",
+    dropdown: [
+      { label: "Blog", href: "/UI-Components/Blogs" },
+      { label: "Blog Details", href: "/UI-Components/Blogs/7" },
+    ],
+  },
+  {
+    label: "Pages",
+    href: "#",
+    dropdown: [
+      { label: "About Me", href: "/UI-Components/Pages/About" },
+      { label: "Pricing Table", href: "/UI-Components/Pages/Pricing" },
+      { label: "Gift Vouchers", href: "/UI-Components/Pages/GiftVoucher" },
+      { label: "Faq", href: "/UI-Components/Pages/Faq" },
+      { label: "Login", href: "/UI-Components/Pages/Login" },
+      { label: "Registration", href: "/UI-Components/Pages/Registration" },
+      { label: "Contact Us", href: "/UI-Components/Pages/Contact" },
+    ],
+  },
+  { label: "Contact Us", href: "/UI-Components/Pages/Contact" },
+];
+
+
+
+// Trending Products
+
+What′s trending now
+Discover the most trending products in FashiQue.
+
+// Products Json Data
+
+[
+    {
+        "id": 1,
+        "title": "Sophisticated Swagger Suit",
+        "image": "/product-1.webp",
+        "price": "$80",
+        "off": "Get 20% off",
+        "cate": "Dresses"
+    },
+    {
+        "id": 2,
+        "title": "Checkered Slim Collar Casual Shirt",
+        "image": "/product-2.webp",
+        "price": "$94",
+        "off": "Get 20% off",
+        "cate": "Outerwear"
+    },
+    {
+        "id": 3,
+        "title": "Solid Cut Away Collar Casual Shirt",
+        "image": "/product-3.webp",
+        "price": "$65",
+        "off": "Get 20% off",
+        "cate": "Outerwear"
+    },
+    {
+        "id": 4,
+        "title": "Athletic Mesh Sports Leggings",
+        "image": "/product-4.webp",
+        "price": "$75",
+        "off": "Get 20% off",
+        "cate": "Jacket"
+    },
+    {
+        "id": 5,
+        "title": "Best Denim Overalls Shorts",
+        "image": "/product-5.webp",
+        "price": "$70",
+        "off": "Get 20% off",
+        "cate": "Jacket"
+    },
+    {
+        "id": 6,
+        "title": "Best Plaid Wool Winter Coat",
+        "image": "/product-6.webp",
+        "price": "$68",
+        "off": "Get 20% off",
+        "cate": "Jacket"
+    },
+    {
+        "id": 7,
+        "title": "Comfy Lounge Jogger Pants",
+        "image": "/product-7.webp",
+        "price": "$79",
+        "off": "Get 20% off",
+        "cate": "Outerwear"
+    },
+    {
+        "id": 8,
+        "title": "Water Resistant Windbreaker Jacket",
+        "image": "/product-8.webp",
+        "price": "$97",
+        "off": "Get 20% off",
+        "cate": "Jacket"
+    },
+    {
+        "id": 9,
+        "title": "Classic Denim Skinny Jeans",
+        "image": "/product-9.webp",
+        "price": "$84",
+        "off": "Get 20% off",
+        "cate": "Outerwear"
+    },
+    {
+        "id": 10,
+        "title": "Stylish Fedora Hat Collection",
+        "image": "/product-10.webp",
+        "price": "$80",
+        "off": "Get 20% off",
+        "cate": "Dresses"
+    },
+    {
+        "id": 11,
+        "title": "Suede Ankle Booties Collection",
+        "image": "/product-11.webp",
+        "price": "$75",
+        "off": "Get 20% off",
+        "cate": "Dresses"
+    },
+    {
+        "id": 12,
+        "title": "Hiking Outdoor Gear Collection",
+        "image": "/product-12.webp",
+        "price": "$94",
+        "off": "Get 20% off",
+        "cate": "Tops"
+    }
+]
+
+// Companies
+
+We’re just keep growing with 6.3k trusted companies
+
+
+// Blog JSON Data
+
+[
+    {
+        "id": 1,
+        "image": "/blog-1.webp",
+        "date": "25 Jan, 2025",
+        "title": "Trendsetter Chronicles: Unveiling the Latest in Fashion",
+        "smallTitle": "Trendsetter Fashion Unveiling",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    },
+    {
+        "id": 2,
+        "image": "/blog-2.webp",
+        "date": "30 Jan, 2025",
+        "title": "Runway Rundown: Decoding Fashion Week’s Best Looks",
+        "smallTitle": "Runway Rundown Fashion",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    },
+    {
+        "id": 3,
+        "image": "/blog-3.webp",
+        "date": "17 Jan, 2025",
+        "title": "Closet Confidential: Behind-the-Scenes of a Fashionista",
+        "smallTitle": "Closet Confidential Fashionista",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    },
+    {
+        "id": 4,
+        "image": "/blog-4.webp",
+        "date": "10 Jan, 2025",
+        "title": "Fashion Forward: Spotlight on Emerging Designers",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    },
+    {
+        "id": 5,
+        "image": "/blog-5.webp",
+        "date": "19 Jan, 2025",
+        "title": "Accessorize Me: The Power of Statement Pieces",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    },
+    {
+        "id": 6,
+        "image": "/blog-6.webp",
+        "date": "25 Jan, 2025",
+        "title": "DIY Couture: Crafting Your Own Fashion Masterpieces",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    },
+    {
+        "id": 7,
+        "image": "/blog-7.webp",
+        "date": "22 May, 2025",
+        "title": "The Sustainable Wardrobe A Greener Approach to Fashion",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    },
+    {
+        "id": 7,
+        "image": "/blog-7.webp",
+        "date": "22 May, 2025",
+        "title": "The Sustainable Wardrobe A Greener Approach to Fashion",
+        "gallery": [
+            "/blog-gallery-1.webp",
+            "/blog-gallery-2.webp",
+            "/blog-gallery-3.webp",
+            "/blog-gallery-4.webp",
+            "/blog-gallery-5.webp"
+        ]
+    }
+]
+
+// FOOTER
+
+Address: 451 Wall Street, UK, London
+E-mail : example@info.com
+Phone : (064) 332-1233
+subscribe to our newsletter
+
+Our Stores
+
+New York
+London SF
+Edinburgh
+Los Angeles
+Chicago
+Las Vegas
+
+Useful Links
+
+Privacy Policy
+Returns
+Terms & Conditions
+Contact Us
+Latest News
+Our Sitemap
+
+Quick Links
+
+Portfolio
+About Me
+Pricing
+Vouchers
+Faq's
+Our Teams
+
+
+© 2025. All Rights Reserved by
+
+
+
+
+
+// Product Details
+
+4.7 Rating
+(5 customer reviews)
+
+
+This product is part of our high-quality collection, crafted with comfort, style,
+and premium fit. Perfect for casual and formal occasions.
+
+Quantity
+
+PRT584E63A
+Dresses, Jeans, Swimwear, Summer, Clothing
+Casual, Athletic, Workwear, Accessories
+
+
+Description
+Flawless Denim Delights
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Versatile, enduring style for all occasions
+Handcrafted Elegance, Comfort
+Versatile, enduring style for all occasions
+
+All-in-One Dress
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+
+Looking wise good
+100% Made In India
+100% Cotton
+
+Bank Offer 5% Cashback
+
+Easy Returns
+30 Days
+
+Enjoy The Product
+Lorem Ipsum is simply dummy text of the printing and typesetting
+
+You will save ₹504 on this 
+
+
+
+// Cart 
+
+<Link href="/UI-Components/Pages/Checkout">
+    <button className="btn w-full mt-3 bg-black text-white cursor-pointer GolosText text-xl px-6 py-3 rounded-md transition-all duration-300">
+        <i className="bi bi-cart4"></i> CheckOut
+    </button>
+</Link>
+
+
+// Checkout
+
+Email me with news and offers
+
+No Stores Available with your item
+
+Ship to address instead
+
+Save this information for next time
+
+Shipping Method
+
+All transactions are secure and encrypted.
+
+
+<div className="border border-gray-300 p-4 rounded shadow-lg">
+  <h5 className="font-bold mb-3 flex items-center gap-1 text-2xl GolosText">
+      <i className="ri-shopping-cart-2-line text-(--second)"></i> Order Summary
+  </h5>
+
+  {cartItems.length === 0 ? (
+    <p className="text-gray-500">Your cart is Empty!</p>
+  ) : (
+    <div className="flex flex-col gap-4">
+        {cartItems.map((item) => {
+            const qty = item.qty ?? 1;
+            const price = parseFloat(item.price.replace("$", ""));
+
+  return (
+      <div key={item.id} className="flex gap-4 border-b border-gray-300 pb-4">
+  <Image
+      src={item.image}
+      alt={item.title}
+      width={120}
+      height={120}
+      className="rounded-lg w-24 h-24 object-cover"
+  />
+
+        <div className="flex-1">
+            <h6 className="GolosText text-lg">{item.title}</h6>
+            {item.off && <p className=" text-sm">{item.off}</p>}
+
+                        <div className="flex justify-between GolosText mt-2">
+                            <span className="text-md">Qty: {qty}</span>
+                            <span className="font-bold text-lg">${(price * qty).toFixed(2)}</span>
+                        </div>
+                    </div>
+                </div>
+            );
+        })}
+    </div>
+  )}
+
+  {/* TOTALS */}
+  <div className="text-sm pt-4 space-y-2">
+  <div className="flex justify-between">
+      <span>Subtotal</span>
+      <span className="GolosText">${totalPrice.toFixed(2)}</span>
+  </div>
+
+    <div className="flex justify-between">
+        <span>Shipping</span>
+        <span>Free</span>
+    </div>
+
+
+    <div className="flex justify-between border-t border-gray-300 pt-2 text-lg">
+        <span>Total</span>
+        <span className="GolosText">${(totalPrice).toFixed(2)}</span>
+    </div>
+  </div>
+
+  {/* BUTTONS */}
+  <button
+    className="mt-5 btn border w-full border-black cursor-pointer hover:bg-black hover:text-white transition-all duration-300 GolosText text-xl px-6 py-3 rounded-md"
+    onClick={handlePlaceOrder}
+  >
+    Place Order
+  </button>
+
+    <Link
+        href="/UI-Components/Pages/Cart"
+    >
+        <button className="btn w-full mt-3 bg-black text-white cursor-pointer GolosText text-xl px-6 py-3 rounded-md transition-all duration-300">
+            Back to Cart
+        </button>
+    </Link>
+</div>
+
+
+
+
+
+// Blog Details Page
+
+p-1 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+p-2 Create An Information Architecture That’s Easy To Use Way Precise Usability Considerations For Partially
+
+p-3 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+p-4 It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+p-5 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+
+_____
+
+// About Page
+
+p-1 Fashique Your Style, Quality, Individuality - Redefining Fashion Together.
+
+p-2 At Fashique, we are on a mission to redefine fashion by blending style, quality, and individuality into every garment we offer. We believe that what you wear is an extension of your unique personality, and it should reflect your values and aspirations.
+
+const faqData = [
+    {
+        question: "How can I contact customer support?",
+        answer:
+            "If your order has not yet shipped, you can contact us to change your shipping address. If your order has already shipped, we may not be able to change the address.",
+    },
+    {
+        question: "Can I cancel my order?",
+        answer:
+            "If your order has not yet shipped, you can contact us to change your shipping address. If your order has already shipped, we may not be able to change the address.",
+    },
+    {
+        question: "Do you offer international shipping?",
+        answer:
+            "If your order has not yet shipped, you can contact us to change your shipping address. If your order has already shipped, we may not be able to change the address.",
+    },
+    {
+        question: "Can I track my order in real-time?",
+        answer:
+            "If your order has not yet shipped, you can contact us to change your shipping address. If your order has already shipped, we may not be able to change the address.",
+    },
+    {
+        question: "How do I know if a product is in stock?",
+        answer:
+            "If your order has not yet shipped, you can contact us to change your shipping address. If your order has already shipped, we may not be able to change the address.",
+    }
+];
+
+const testimonials = [
+    {
+        id: 1,
+        text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        img: aboutImg3,
+        name: "Kenneth Fong",
+        role: "Postgraduate Student",
+    },
+    {
+        id: 2,
+        text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        img: aboutImg3,
+        name: "Joe Do",
+        role: "Undergraduate Student",
+    },
+];
+
+// Pricing Plan
+
+p-1 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+
+p-2 Access to all features
+
+p-3 Assisted onboarding support
+
+p-4 CPM Overage: Unlimited
+
+p-5 Program reviews 1x a month
+
+p-6 Our experts will help find the grar that’s right for you
+
+// Vouchers Page
+
+const VouchersData = [
+    {
+        id: 1,
+        image: Voucher1,
+        title: "The perfect gift for any occasion",
+        info: "Our gift cards are available in a range of denominations, so you can choose the perfect amount for any occasion."
+    },
+    {
+        id: 2,
+        image: Voucher2,
+        title: "Delight Someone with a Gift Voucher",
+        info: "Our gift cards are available in a range of denominations, so you can choose the perfect amount for any occasion."
+    },
+    {
+        id: 3,
+        image: Voucher3,
+        title: "Let Them Choose Their Perfect Gift",
+        info: "Our gift cards are available in a range of denominations, so you can choose the perfect amount for any occasion."
+    },
+    {
+        id: 4,
+        image: Voucher4,
+        title: "Experience the Ultimate Gift",
+        info: "Our gift cards are available in a range of denominations, so you can choose the perfect amount for any occasion."
+    },
+    {
+        id: 5,
+        image: Voucher5,
+        title: "Share the Joy with a Gift Voucher",
+        info: "Our gift cards are available in a range of denominations, so you can choose the perfect amount for any occasion."
+    },
+    {
+        id: 6,
+        image: Voucher6,
+        title: "Gift a Voucher and Make Their Day",
+        info: "Our gift cards are available in a range of denominations, so you can choose the perfect amount for any occasion."
+    },
+];
+
+// Contact Page
+
+DISCOVER US
+
+Fashique is here to help you;
+
+p-1 Our experts are available to answer any questions you might have. We’ve got the answers.
+
+p-2 +01-123-456-7890
