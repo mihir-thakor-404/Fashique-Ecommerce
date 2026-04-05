@@ -7,7 +7,7 @@ import starShape from "@/public/star-shape.svg";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-import "@splidejs/react-splide/css";
+// import "@splidejs/react-splide/css";
 
 export default function Banner() {
     const categories = [
@@ -30,7 +30,7 @@ export default function Banner() {
                         height={300}
                         className="banner-shop-img"
                     />
-                    <Image
+                    <Image 
                         src={playIcon}
                         alt="playIcon"
                         width={100}
