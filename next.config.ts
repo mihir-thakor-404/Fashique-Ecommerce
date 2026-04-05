@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   //   unoptimized: true,        // ← GitHub Pages pe next/image ke liye mandatory
   // },
   trailingSlash: true,        // ← Common issue avoid karta hai
+  images: { unoptimized: false },
 };
 
 export default nextConfig;
