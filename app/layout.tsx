@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { Audiowide, Golos_Text } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./Components/Navbar/Navbar";
-import Footer from "./Components/Footer/Footer";
+// import Navbar from "./Components/Navbar/Navbar";
+// import Footer from "./Components/Footer/Footer";
 import LayoutClient from "./LayoutClient";
 
 const audiowide = Audiowide({
-  weight: "400",
+  weight: ["400"],
   variable: "--font-audiowide",
   subsets: ["latin"],
 });
 
 const golostext = Golos_Text({
-  weight: "400",
+  weight: ["400"],
   variable: "--font-golostext",
   subsets: ["latin"],
 });

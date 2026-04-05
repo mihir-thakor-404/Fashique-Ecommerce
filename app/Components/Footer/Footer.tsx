@@ -93,7 +93,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="border-t border-gray-400 py-5 text-center">
-                    <p className="GolosText text-xl">© 2025. All Rights Reserved by <Link href="https://uicode.in/" className="transition-all font-semibold duration-300 text-xl hover:text-(--second)"> uicode</Link></p>
+                    <p className="GolosText text-xl">© 2025. All Rights Reserved.</p>
                 </div>
             </div>
         </>
