@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',           // ← Yeh zaroori hai static export ke liye
-  basePath: '/Fashique-Ecommerce',   // ← Tumhare repo ka exact naam (case sensitive)
-  assetPrefix: '/Fashique-Ecommerce', // ← Images aur assets ke liye
+  // output: 'export',
+  basePath: '/Fashique-Ecommerce',   
+  assetPrefix: '/Fashique-Ecommerce', 
   images: {
-    unoptimized: true,        // ← GitHub Pages pe next/image ke liye mandatory
+    unoptimized: true,        
   },
-  trailingSlash: true,        // ← Common issue avoid karta hai
+  trailingSlash: true,
 };
 
 export default nextConfig;
